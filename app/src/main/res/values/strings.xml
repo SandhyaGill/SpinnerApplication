@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SpinnerApplication</string>
+    <string name="get_spinner_value">Get Spinner Value</string>
+    <string name="text">Text</string>
+    <string name="title">Title</string>
+
+    <string-array name="spinner_items">
+        <item name="apple">Apple</item>
+        <item name="banana">Banana</item>
+        <item name="mango">Mango</item>
+    </string-array>
 </resources>

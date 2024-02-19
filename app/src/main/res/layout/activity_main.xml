@@ -21,7 +21,38 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_margin="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTittle"/>
+        app:layout_constraintTop_toBottomOf="@id/tvTittle"
+        android:entries="@array/spinner_items"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adapterSpinner"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userClassSpinner"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/adapterSpinner"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/companySpinner"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/userClassSpinner"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnGetSpinnerValue"
+        android:text="@string/get_spinner_value"
+        app:layout_constraintTop_toBottomOf="@id/companySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

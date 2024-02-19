@@ -14,13 +14,37 @@ import com.example.spinnerapplication.databinding.DialogBoxBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var  binding: ActivityMainBinding
-    var itemsCount = arrayListOf<String>()
-//    var items = ""
+    var array = arrayListOf<String>("Testing","Testing 1","Testing 2")
+    lateinit var arrayAdapter: ArrayAdapter<String>
+    var spinnerAdapter = SpinnerAdapter(array)
+    var companyArray = arrayListOf<CompanyModel>(CompanyModel(1,"o7 Services","Jal"),
+        CompanyModel(1,"o7 Solutions","Jal"),
+        CompanyModel(1,"o7 Tec","Hsp"))
+    var companyName = companyArray.map{it.name}
+    lateinit var companyAdapter: ArrayAdapter<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        spinner()
+
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, array)
+        binding.adapterSpinner.adapter = arrayAdapter
+
+        binding.userClassSpinner.adapter = spinnerAdapter
+
+        companyAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, companyName)
+        binding.companySpinner.adapter = companyAdapter
+
     binding.fab.setOnClickListener {
         showDialog()
     }
@@ -36,32 +60,10 @@ class MainActivity : AppCompatActivity() {
             show()
         }
         dialogBinding.btnSave.setOnClickListener {
-            itemsCount.add(dialogBinding.etName.text.toString())
+            array.add(dialogBinding.etName.text.toString())
             dialog.cancel()
         }
-//
     }
-    fun spinner(){
-        var items = arrayOf("1","2","3","4","5")
-        itemsCount.add("Test Item")
-        val adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item, itemsCount)
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
-        binding.spinner.adapter = adapter
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                var item = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(this@MainActivity,"$item" ,Toast.LENGTH_SHORT).show()
-            }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
 
-        }
-    }
 }
