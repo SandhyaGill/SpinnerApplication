@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     var companyArray = arrayListOf<CompanyModel>(CompanyModel(1,"o7 Services","Jal"),
         CompanyModel(1,"o7 Solutions","Jal"),
         CompanyModel(1,"o7 Tec","Hsp"))
-    var companyName = companyArray.map{it.name}
-    lateinit var companyAdapter: ArrayAdapter<String>
+
+    lateinit var companyAdapter: ArrayAdapter<CompanyModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.userClassSpinner.adapter = spinnerAdapter
 
-        companyAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, companyName)
+        companyAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, companyArray)
         binding.companySpinner.adapter = companyAdapter
 
     binding.fab.setOnClickListener {
